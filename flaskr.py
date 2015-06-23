@@ -11,3 +11,14 @@ USERNAME = 'admin'
 PASSWORD = 'default'
 
 #create the app!
+app = Flask(__name__)
+app.config.from_object(__name__)
+#later, change to:
+#app.config.from_envar('FLASKR_SETTINGS', silent=True)
+
+
+def connect_db():
+        return sqlite3.connect(app.config['DATABASE'])
+
+if __name__ == '__main__':
+        app.run()
